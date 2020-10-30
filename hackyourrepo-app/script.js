@@ -48,6 +48,7 @@ function fillSectionsWithRepoData() {
 
     // catch the selected element from the array, and append it's value to the section repo results
     if (el.name === selectedRepoValue) {
+      reposContainer.style.display = 'block'
       repoData.innerText = placeholderRepos[index].name;
       descritopnData.innerText = placeholderRepos[index].description;
       forkData.innerText = placeholderRepos[index].forks;

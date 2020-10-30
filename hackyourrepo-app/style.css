@@ -69,6 +69,10 @@
   font-size: 22px;
   font-weight: bold;
 }
+.repo-result{
+ display: none;
+  
+}
 
 .repo-result span {
 }
