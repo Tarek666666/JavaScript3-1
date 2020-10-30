@@ -54,6 +54,7 @@
   list-style: none;
 }
 
+
 .contributors-result li {
   height: 80px;
   color: gray;
@@ -71,7 +72,6 @@
 }
 .repo-result{
  display: none;
-  
 }
 
 .repo-result span {
