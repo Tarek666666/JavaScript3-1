@@ -45,9 +45,10 @@
 }
 
 .main-nav select {
-  width: 10rem;
+  width: 20rem;
   height: 2rem;
   font-size: 20px;
+  font-weight: bold;
 }
 
 .main-container ul {
@@ -65,19 +66,31 @@
   width: 3rem;
   height: 3rem;
 }
+tr td {
+
+  font-weight: bold;
+  color: blue;
+  font-size: 15px;
+}
+
+tr .red {
+
+  color: red;
+
+}
 
 .repo-result span {
   font-size: 22px;
   font-weight: bold;
+  color: black;
 }
 .repo-result{
  display: none;
 }
 
-.repo-result span {
-}
 
-.repo-result table td {
+
+.repo-result table tbody td {
   font-size: 15px;
   padding: 5px;
   font-family: Arial, Helvetica, sans-serif;
@@ -88,12 +101,28 @@
 @media only screen and (min-width: 320px) and (max-width: 425px) {
   .main-header {
     width: 100%;
+    height: 100px;
   }
   .main-container {
     width: 100%;
-    flex-direction: column-reverse;
+    flex-direction: column;
     background-color: #3f51b5;
   }
+  .main-nav select {
+    
+    max-width: 19rem;
+    height: 2rem;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .main-nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+ 
+  }
+
   .output-repos,
   .output-contributors {
     width: 100%;
@@ -111,7 +140,7 @@
   }
   .main-container {
     width: 100%;
-    flex-direction: column-reverse;
+    flex-direction: column;
     background-color: #3f51b5;
   }
   .output-repos,
