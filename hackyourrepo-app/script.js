@@ -108,18 +108,13 @@ function main() {
       .then(data => {
         // to make section visible
         reposResult.style.display = 'block';
-        // checking if there is no description for this repo, we replace the result (null) of other sentence
-        if (data.description === null) {
-          data.description =
-            'Unfortunately There is no Description for this repo !!!';
-        }
         reposTable.innerHTML = ` <tr>
                                       <td><span>Repository:</span></td>
                                       <td id="repo">${data.name}</td>
                                       </tr>
                                       <tr>
                                         <td><span>Description:</span></td>
-                                        <td id="desc">${data.description}</td>
+                                        <td id="desc">${data.description === null ? 'Unfortunately There is no Description for this repo !!!' : data.description }</td>
                                       </tr>
                                       <tr>
                                         <td><span>Fork:</span></td>
