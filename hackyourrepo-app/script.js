@@ -1,7 +1,7 @@
 'use strict';
 
 function main() {
-  // variables , to create all html elemnts using only javascript 
+  // variables , to create all html elemnts using only javascript
 
   const body = document.querySelector('body');
   const header = document.createElement('header');
@@ -56,37 +56,27 @@ function main() {
 
   contributorsResult.appendChild(contributorsUl);
 
-  
-
   // functions
- //this function fetches all repos names, and set them alphabetically-ordered into an Array and finally it adds those names as options in selectbox;
+  //this function fetches all repos names, and set them alphabetically-ordered into an Array and finally it adds those names as options in selectbox;
   function fetchingAllRepos() {
     fetch(url)
       .then(res => res.json())
       .then(data => {
         // getting the repos name from the API, and put all repos's names in reposNames array. [ alphabetically-ordered as asked]
-        let reposNames = [];
-        data.forEach(repo => {
-          reposNames.push(repo.name);
-          // sort the result alphabetically-ordered
-          reposNames.sort((a, b) => {
-            a = a.toLowerCase();
-            b = b.toLowerCase();
-            if (a > b) {
-              return 1;
-            }
-            if (b > a) {
-              return -1;
-            }
-            return 0;
-          });     
+        let reposNames = data.map(repo => repo.name).sort((a,b) => {
+          if (a.toUpperCase() > b.toUpperCase()){
+            return 1
+          } else if (a.toUpperCase() < b.toUpperCase() ){
+            return -1
+          } else { return 0}
         });
+
         // after getting the sorted array ready , we start to set those names as options in the selection box;
         reposNames.forEach(option => {
           const createdOption = document.createElement('option');
           createdOption.innerText = option;
-          selectBox.appendChild(createdOption)
-        })       
+          selectBox.appendChild(createdOption);
+        });
       })
       // handle error in the api's link, if  the data couldn't be fetched then we show the error in a new div element
       .catch(err => {
@@ -97,7 +87,6 @@ function main() {
       });
   }
 
-  
   // this function will be used to listen to the selections, and fetch the data of the specific selected repo , then it adds the information to the dom
   function addSelectedRepo() {
     const selectedRepo = selectBox.value;
@@ -114,7 +103,11 @@ function main() {
                                       </tr>
                                       <tr>
                                         <td><span>Description:</span></td>
-                                        <td id="desc">${data.description === null ? 'Unfortunately There is no Description for this repo !!!' : data.description }</td>
+                                        <td id="desc">${
+                                          data.description === null
+                                            ? 'Unfortunately There is no Description for this repo !!!'
+                                            : data.description
+                                        }</td>
                                       </tr>
                                       <tr>
                                         <td><span>Fork:</span></td>
@@ -177,13 +170,18 @@ function main() {
         body.insertBefore(errorContainer, mainContainer);
         reposResult.style.display = 'none';
       });
-      
   }
 
   fetchingAllRepos();
   selectBox.addEventListener('change', addSelectedRepo);
-
-  
 }
 
 window.addEventListener('load', main);
+
+
+
+
+
+
+
+

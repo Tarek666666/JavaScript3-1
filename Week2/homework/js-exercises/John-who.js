@@ -34,16 +34,21 @@ getAnonName('John', console.log);
 /* -------------------------------------------------------------*/
 
 const getAnonNamePromise = firstName => {
- setTimeout(()=>{
-    return new Promise((resolve, reject) => {
-        if (!firstName) {
-          reject(console.log(new Error("You didn't pass in a first name!")));
-        } else {
-          const fullName = `${firstName} Aljabr`;
-          resolve(console.log(fullName));
-        }
-      });
- } , 2000)
+  return new Promise((resolve, reject) => {
+    setTimeout(function() {
+      if (!firstName) {
+        reject(new Error("You didn't pass in a first name!"));
+      } else {
+        const fullName = `${firstName} Aljabr`;
+        resolve(fullName);
+      }
+    }, 2000);
+  });
 };
 
-getAnonNamePromise('Tarek')
+getAnonNamePromise('Tarek').then(res => {
+  console.log(res);
+}).catch(err => {
+
+  console.log(err)
+});
